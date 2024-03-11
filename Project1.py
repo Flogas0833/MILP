@@ -37,10 +37,10 @@ def solve_problem(N, K, d):
 
     # Constraint: Each vehicle starts and ends at point 0
     for k in range(K):
-        start_expr = cplex.SparsePair(ind=[x[(0, j, k)] for j in range(1, N + 1)], val=[1.0] * N)
-        end_expr = cplex.SparsePair(ind=[x[(i, N + 1, k)] for i in range(1, N + 1)], val=[1.0] * N)
-        model.linear_constraints.add(lin_expr=[start_expr], senses="E", rhs=[1])
-        model.linear_constraints.add(lin_expr=[end_expr], senses="E", rhs=[1])
+        start = cplex.SparsePair(ind=[x[(0, j, k)] for j in range(1, N + 1)], val=[1.0] * N)
+        end = cplex.SparsePair(ind=[x[(i, N + 1, k)] for i in range(1, N + 1)], val=[1.0] * N)
+        model.linear_constraints.add(lin_expr=[start], senses="E", rhs=[1])
+        model.linear_constraints.add(lin_expr=[end], senses="E", rhs=[1])
 
     # Constraint: Vehicle cannot travel from point i to itself
     for i in range(N + 2):
