@@ -11,7 +11,7 @@ def solve_problem(N, K, d):
     # Create MILP solver
     model = cplex.Cplex()
 
-    # Create variables and give them names
+    # Create variables 
     x_names = [[[f"x{i}_{j}_{k}" for k in range(K)] for j in range(N + 2)] for i in range(N + 2)]
     x = {}
     for i in range(N + 2):
