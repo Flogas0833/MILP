@@ -57,28 +57,25 @@ def solve_problem(N, K, d):
     model.objective.set_linear(obj)
 
     # Solve the problem
-    solution = model.solve()
+    model.solve()
 
     # Print the optimal solution
-    if solution:
-        print("Total Distance:", model.solution.get_objective_value())
+    print("Total Distance:", model.solution.get_objective_value())
 
-        for k in range(K):
-            print('Vehicle', k + 1, ':')
-            current_point = 0
-            route = [0]
-            while current_point != N + 1:
-                for i in range(N + 2):
-                    if model.solution.get_values(x[(current_point, i, k)]) == 1:
-                        current_point = i
-                        if current_point == N + 1:
-                            route.append(0)
-                        else:
-                            route.append(i)
-                        break
-            print(', '.join(map(str, route)))
-    else:
-        print("No feasible solution")
+    for k in range(K):
+        print('Vehicle', k + 1, ':')
+        current_point = 0
+        route = [0]
+        while current_point != N + 1:
+            for i in range(N + 2):
+                if model.solution.get_values(x[(current_point, i, k)]) == 1:
+                    current_point = i
+                    if current_point == N + 1:
+                        route.append(0)
+                    else:
+                        route.append(i)
+                    break
+        print(', '.join(map(str, route)))
 
 if __name__ == '__main__':
     # Example usage
