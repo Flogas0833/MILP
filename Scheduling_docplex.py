@@ -88,7 +88,7 @@ def solve(M: int, N: int, G: nx.DiGraph, W: list[list[int]], D: int, cost: list[
 
 if __name__ == '__main__':
     # Example usage
-    M = 7
+    M = 8
     N = 3
     G = nx.DiGraph()
     G.add_nodes_from(list(range(M)))
@@ -101,15 +101,15 @@ if __name__ == '__main__':
     G.add_edge(2, 4, weight = 3)
     G.add_edge(2, 6, weight = 7)
     G.add_edge(3, 5, weight = 2)
-    G.add_edge(3, 6, weight = 2)
+    G.add_edge(3, 7, weight = 5)
     G.add_edge(4, 5, weight = 1)
     G.add_edge(4, 6, weight = 3)
     W = [
-        [4, 1, 3, 2, 4, 3, 5],
-        [3, 1, 3, 3, 2, 1, 2],
-        [3, 4, 2, 2, 3, 3, 7]
+        [4, 1, 3, 2, 4, 3, 5, 5],
+        [3, 1, 3, 3, 2, 1, 2, 6],
+        [3, 4, 2, 2, 3, 3, 7, 6]
     ]
-    D = 15
+    D = 18
     cost = [6, 8, 5]
 
     solve(M, N, G, W, D, cost)
