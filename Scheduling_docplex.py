@@ -22,8 +22,7 @@ def solve(M: int, N: int, G: nx.DiGraph, W: list[list[int]], D: int, cost: list[
 
     # Constraint: Each task is done once
     for i in range(M):
-        done = model.sum_vars(x[i, n] for n in range(N))
-        model.add_constraint(done == 1)
+        model.add_constraint(model.sum_vars(x[i, n] for n in range(N)) == 1)
 
     # if task i, j in the same processor
     for i in range(M):
@@ -40,6 +39,7 @@ def solve(M: int, N: int, G: nx.DiGraph, W: list[list[int]], D: int, cost: list[
 
     # Constraint: If i, j in the same processor, can only do task after finish the condition tasks
     for i, j in G.edges:
+        # if same[i, j] == 1 then ST[j] - FT[i] >= 0
         model.add_constraint(ST[j] - FT[i] >= big_M * (same[i, j] - 1))
 
     # Constraint: Each processor cannot do 2 task each time
