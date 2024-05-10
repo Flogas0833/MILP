@@ -1,0 +1,4 @@
+cplex==22.1.1.2
+docplex==2.27.239
+networkx==3.3
+six==1.16.0
