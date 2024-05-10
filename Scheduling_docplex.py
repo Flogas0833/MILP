@@ -101,7 +101,7 @@ if __name__ == '__main__':
     G.add_edge(2, 4, weight = 3)
     G.add_edge(2, 6, weight = 7)
     G.add_edge(3, 5, weight = 2)
-    G.add_edge(3, 7, weight = 5)
+    G.add_edge(3, 6, weight = 5)
     G.add_edge(4, 5, weight = 1)
     G.add_edge(4, 6, weight = 3)
     W = [
